@@ -2,3 +2,11 @@
 .Rhistory
 .RData
 .Ruserdata
+renv/library/
+renv/python/
+renv/staging/
+
+
+# ignore instructions files
+/instructions/*
+*.pdf
