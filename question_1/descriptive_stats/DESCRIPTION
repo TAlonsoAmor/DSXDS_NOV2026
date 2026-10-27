@@ -1,0 +1,16 @@
+Package: descriptiveStats
+Title: Descriptive Statistics Functions
+Version: 0.1.0
+Authors@R:
+    person("Tatiana", "Alonso Amor", role = c("aut", "cre"),
+           email = "tatiana@example.com")
+Description: Provides functions to calculate common descriptive statistics
+    including mean, median, mode, quartiles, and interquartile range.
+    All functions handle NA values and edge cases explicitly.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.1
