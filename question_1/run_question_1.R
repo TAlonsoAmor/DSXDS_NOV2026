@@ -1,7 +1,7 @@
 # Question 1: Descriptive Statistics Package Demo
 # Installs and loads the descriptiveStats package, then runs example usage.
 
-#devtools::install("question_1/descriptive_stats", quiet = TRUE)
+devtools::install("question_1/descriptive_stats", quiet = TRUE)
 library(descriptiveStats)
 
 data <- c(1, 2, 2, 3, 4, 5, 5, 5, 6, 10)
