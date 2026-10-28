@@ -4,7 +4,9 @@ library(dplyr)
 library(forcats)
 library(scales)
 
-# PLOT 1
+
+# PLOT 1 ------------------------------------------------------------------
+
 # AE severity distribution by treatment (bar chart or heatmap). AE Severity is captured in the AESEV variable in pharmaverseadam::adae dataset.
 
 adae <- pharmaverseadam::adae |> 
@@ -18,13 +20,15 @@ plot_1 <- ggplot(adae, aes(x = TRT01A, fill = AESEV)) +
   labs(title = "AE Severity distribution by treatment, Safety Population",
        y = "Count of AEs",
        x = "Treatment Arm",
-       caption = "Only treatment emergent adverse events are considered.") +
+       caption = "Only treatment emergent AEs are displayed.") +
   theme(plot.caption = element_text(hjust = 0))
 
 # save plot
 ggsave("./question_4/plot_1.png",plot_1)
 
-# PLOT 2
+
+# PLOT 2 ------------------------------------------------------------------
+
 # Top 10 most frequent AEs (with 95% CI for incidence rates). AEs are captured in the AETERM variable in pharmaverseadam::adae dataset.
 
 unique_patients <- length(unique(adae$USUBJID))
@@ -48,13 +52,14 @@ top10_ae <- adae |>
 
 plot_2 <- ggplot(top10_ae, aes(x = fct_reorder(AETERM, perc_events), y = perc_events, ymin = ci_low, ymax = ci_hi)) +
   geom_point(size = 2) +
-  geom_errorbar(height = 0.3)+
+  geom_errorbar(width = 0.3)+
   coord_flip() +
   labs(y = "Percentage of Patients (%)",
        x = NULL,
        title = "Top 10 Most Frequent Adverse Events, Safety Population",
        subtitle = paste0("n = ", unique_patients, "; 95% Clopper-Pearson CIs"),
-       caption = "Only treatment emergent adverse events are considered.") +
-  scale_y_continuous(labels = label_percent(scale = 1))
+       caption = "Only treatment emergent AEs are displayed.") +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+  theme(plot.caption = element_text(hjust = 0))
   
 ggsave("./question_4/plot_2.png", plot_2, width = 7.5)
