@@ -9,18 +9,14 @@ library(scales)
 
 # AE severity distribution by treatment (bar chart or heatmap). AE Severity is captured in the AESEV variable in pharmaverseadam::adae dataset.
 
-adae <- pharmaverseadam::adae |> 
-  # keep treatment emergent AEs and safety population
-  filter(TRTEMFL == "Y",
-        SAFFL == "Y")
+adae <- pharmaverseadam::adae 
 
 # create plot
 plot_1 <- ggplot(adae, aes(x = TRT01A, fill = AESEV)) +
   geom_bar() +
-  labs(title = "AE Severity distribution by treatment, Safety Population",
+  labs(title = "AE Severity distribution by treatment",
        y = "Count of AEs",
-       x = "Treatment Arm",
-       caption = "Only treatment emergent AEs are displayed.") +
+       x = "Treatment Arm") +
   theme(plot.caption = element_text(hjust = 0))
 
 # save plot
@@ -56,9 +52,9 @@ plot_2 <- ggplot(top10_ae, aes(x = fct_reorder(AETERM, perc_events), y = perc_ev
   coord_flip() +
   labs(y = "Percentage of Patients (%)",
        x = NULL,
-       title = "Top 10 Most Frequent Adverse Events, Safety Population",
-       subtitle = paste0("n = ", unique_patients, "; 95% Clopper-Pearson CIs"),
-       caption = "Only treatment emergent AEs are displayed.") +
+       title = "Top 10 Most Frequent Adverse Events",
+       subtitle = paste0("n = ", unique_patients, "; 95% Clopper-Pearson CIs")
+       ) +
   scale_y_continuous(labels = label_percent(scale = 1)) +
   theme(plot.caption = element_text(hjust = 0))
   
