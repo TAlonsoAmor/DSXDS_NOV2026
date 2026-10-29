@@ -135,3 +135,6 @@ The agent (`agent.py`) implements the full `Prompt → Parse → Execute` pipeli
 2. **Parse** — `_call_llm()` returns a JSON object like `{"target_column": "AESEV", "filter_value": "MODERATE"}`. Currently this step is mocked with keyword-based logic; replacing the body of `_call_llm()` with a real OpenAI API call requires no other changes.
 3. **Execute** — `_execute()` applies the parsed filter as a Pandas boolean mask to the `adae` dataframe and returns the unique subject count and list of `USUBJID`s.
 
+## AI Assistance Disclosure
+
+This assessment was completed with assistance from Claude (Anthropic's AI assistant), particularly for Questions 5 and 6. Claude was used as a learning tool to understand concepts, debugging code issues, and receiving guidance on best practices for API/GenAI development and implementation. All code was reviewed, understood, and adapted to meet the specific requirements of each question.
