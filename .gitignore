@@ -7,6 +7,10 @@ renv/python/
 renv/staging/
 
 
+# Python
+__pycache__/
+*.pyc
+
 # ignore instructions files
 /instructions/*
 *.pdf
