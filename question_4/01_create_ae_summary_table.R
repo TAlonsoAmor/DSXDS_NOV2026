@@ -12,8 +12,7 @@ adae <- pharmaverseadam::adae
 
 # Create table dataset
 adae_tb <- adae |> 
-  filter(TRTEMFL == "Y",
-         SAFFL == "Y")
+  filter(TRTEMFL == "Y")
 
 # Crate and save table with gtsummary
 tbl <- adae_tb |>

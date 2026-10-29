@@ -12,8 +12,7 @@ adae <- pharmaverseadam::adae
 
 # Create listing dataset
 adae_ls <- adae |> 
-  filter(TRTEMFL == "Y",
-         SAFFL == "Y") |> 
+  filter(TRTEMFL == "Y") |> 
   select(USUBJID, ACTARM, AETERM, AESEV, AEREL, AESTDTC, AEENDTC) |>
   # sort by USUBJID and AESTDTC
   arrange(USUBJID, ACTARM, AESTDTC) |>
@@ -31,7 +30,7 @@ adae_ls <- adae |>
 # Create and save listing
 adae_ls |> 
   gt() |>
-  tab_header(title = "Listing of Treatment-Emergent Adverse Events by Subject, Safety Population") |>
+  tab_header(title = "Listing of Treatment-Emergent Adverse Events by Subject") |>
   tab_style(
     style     = cell_text(align = "left"),
     locations = cells_title(groups = c("title"))
